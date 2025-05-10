@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dynamic Calendar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .calendar {
+      display: inline-block;
+      margin-top: 20px;
+    }
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 40px);
+      gap: 5px;
+    }
+    .day {
+      font-weight: bold;
+    }
+    .date {
+      padding: 5px;
+      background: #f0f0f0;
+      cursor: pointer;
+    }
+    .date:hover {
+      background: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="calendar">
+    <div class="calendar-header">
+      <button onclick="changeMonth(-1)">◀</button>
+      <div id="month-year"></div>
+      <button onclick="changeMonth(1)">▶</button>
+    </div>
+    <div class="calendar-grid" id="calendar-days">
+      <!-- Weekday names -->
+      <div class="day">Sun</div>
+      <div class="day">Mon</div>
+      <div class="day">Tue</div>
+      <div class="day">Wed</div>
+      <div class="day">Thu</div>
+      <div class="day">Fri</div>
+      <div class="day">Sat</div>
+    </div>
+  </div>
+
+  <script>
+    const calendarDays = document.getElementById('calendar-days');
+    const monthYear = document.getElementById('month-year');
+    let currentDate = new Date();
+
+    function renderCalendar(date) {
+      const year = date.getFullYear();
+      const month = date.getMonth();
+
+      // Set header
+      const monthNames = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+      ];
+      monthYear.textContent = `${monthNames[month]} ${year}`;
+
+      // Remove old dates
+      const oldDates = document.querySelectorAll('.date');
+      oldDates.forEach(el => el.remove());
+
+      // Get first day of month
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      // Add empty slots for first day offset
+      for (let i = 0; i < firstDay; i++) {
+        const empty = document.createElement('div');
+        calendarDays.appendChild(empty);
+      }
+
+      // Fill in days
+      for (let i = 1; i <= daysInMonth; i++) {
+        const day = document.createElement('div');
+        day.className = 'date';
+        day.textContent = i;
+        calendarDays.appendChild(day);
+      }
+    }
+
+    function changeMonth(delta) {
+      currentDate.setMonth(currentDate.getMonth() + delta);
+      renderCalendar(currentDate);
+    }
+
+    renderCalendar(currentDate);
+  </script>
+</body>
+</html>
