@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import './Calendar.css';
 
+
 const Calendar: React.FC = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+
 
   const monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
   ];
 
+// calendar build based on provided months + data for each
   const getCalendarDays = (date: Date): (string | number)[] => {
     const year = date.getFullYear();
     const month = date.getMonth();
@@ -45,6 +48,7 @@ const Calendar: React.FC = () => {
     setSelectedDate(clickedDate);
   };
 
+// current date
   const isToday = (day: number) => {
     const today = new Date();
     return (
@@ -54,6 +58,7 @@ const Calendar: React.FC = () => {
     );
   };
 
+// date selected
   const isSelected = (day: number) => {
     return (
       selectedDate &&
@@ -64,13 +69,14 @@ const Calendar: React.FC = () => {
   };
 
   return (
+    <div className="card-body">
     <div className="calendar">
       <div className="calendar-header">
-        <button onClick={() => changeMonth(-1)}>◀</button>
+        <button className="button2" onClick={() => changeMonth(-1)}>◀</button>
         <div className="month-year">
           {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
         </div>
-        <button onClick={() => changeMonth(1)}>▶</button>
+        <button className="button3" onClick={() => changeMonth(1)}>▶</button>
       </div>
 
       <div className="calendar-grid">
@@ -101,6 +107,7 @@ const Calendar: React.FC = () => {
           You selected: {selectedDate.toDateString()}
         </div>
       )}
+    </div>
     </div>
   );
 };

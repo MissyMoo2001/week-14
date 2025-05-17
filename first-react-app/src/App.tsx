@@ -1,7 +1,8 @@
 import Calendar from "./Calendar"
 import Notes from "./Notes"
 import './App.css'
-import Footer from "./footer"
+import Footer from "./Footer"
+
 
 
 
