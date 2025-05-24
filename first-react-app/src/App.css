@@ -1,4 +1,11 @@
 body {
-    background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+    background: linear-gradient(to bottom, #f43d3d, #ffad87);
   }
   
+.header {
+  text-align: center;
+  margin: 10px auto;
+  font-family: Georgia, serif;
+  background-color: rgba(244, 61, 61, 0.507);
+  border-radius: 8px;
+}

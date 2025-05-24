@@ -1,0 +1,24 @@
+.note-input-section {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.note-list-section {
+    list-style: none;
+    padding: 0;
+}
+
+.note-item {
+    margin-bottom: 10px;
+    cursor: grab;
+}
+
+.item-style {
+    background: rgb(255, 154, 131);
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+}

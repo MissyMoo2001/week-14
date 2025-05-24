@@ -8,6 +8,7 @@ export default function Footer() {
             width: '100%',
             textAlign: 'center',
             padding: '5px',
+            fontFamily: 'Georgia, serif'
         }}>
            &copy; Melyssa Rodman 2025 
         </footer>
